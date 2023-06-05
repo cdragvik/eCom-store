@@ -18,14 +18,15 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: #4F709C;
   }
 `
 
 const StyledList = styled.ul`
     display: flex;
-    gap: 2vh;
+    gap: 4vh;
     padding: 4vh;
+    font-size: 20px;
 `
 
 
@@ -34,7 +35,7 @@ export default function Header() {
 
     <NavBar>
         
-        <img src={Logo}/>  
+        <img src={Logo} alt="logo"/>  
 
         <StyledList>
            <StyledLink to="/">Home</StyledLink> 

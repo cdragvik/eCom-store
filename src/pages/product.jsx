@@ -1,76 +1,139 @@
-
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 
 const ContentContainer = styled.div`
-display: grid; 
-justify-content: center; 
-gap: 40px;
-margin: 20px;
-text-align: center;
-`
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+`;
+
 const StyledImage = styled.img`
-object-fit: fill;
-height: 200px;
-`
+  object-fit: fill;
+  height: 300px;
+  border-radius: 10px;
+`;
+
+const ProductInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h1`
+padding: 10px 0px;
+`;
+
+const Description = styled.p`
+  margin-bottom: 10px;
+  padding: 10px 0px;
+`;
+
+const PriceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const OriginalPrice = styled.p`
+  text-decoration: line-through;
+  color: gray;
+  margin-bottom: 5px;
+`;
+
+const DiscountedPrice = styled.p`
+  font-weight: bold;
+`;
+
 const CartButton = styled.button`
-  background: #008CBA; /* Blue background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 12px 24px; /* Some padding */
-  cursor: pointer; /* Mouse pointer on hover */
-  display: block;
-  margin: 20px auto;
-  
+  background: #ECB390;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 12px; 
+  cursor: pointer;
+  margin-top: 20px;
+
   &:hover {
-    background: #007B9A;
+    background: #f4d3be;
   }
 `;
 
-const ImageContainer = styled.div` height: 200px; overflow: hidden;`
+const ReviewSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+`;
 
-const ReviewContainer = styled.div`text-align: left; background: green;`
+const ReviewContainer = styled.div`
+  padding: 20px;
+  border-top: solid gray;
+  width: 300px;
+`;
 
+const ReviewUsername = styled.p`
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const ReviewRating = styled.p`
+  margin-bottom: 5px;
+`;
+
+const ReviewDescription = styled.p`
+  margin-bottom: 0;
+`;
 
 export function ProductPage() {
+  const { id } = useParams();
+  const [product, setProduct] = useState();
 
-    const {id} = useParams();
-    const [product, setProduct] = useState();
+  useEffect(() => {
+    fetch(`https://api.noroff.dev/api/v1/online-shop/${id}`)
+      .then((response) => response.json())
+      .then((parsed) => setProduct(parsed));
+  }, []);
 
-    useEffect( () => {
-        fetch(`https://api.noroff.dev/api/v1/online-shop/${id}`)
-            .then(response => response.json())
-            .then(parsed => setProduct(parsed));
+  return (
+    <Layout>
+        <br></br>
+      <ContentContainer>
+        <StyledImage src={product?.imageUrl} alt="Product image" />
+        <ProductInfoContainer>
+          <Title>{product?.title}</Title>
+          <Description>{product?.description}</Description>
+          <PriceContainer>
+            {product?.discountedPrice < product?.price ? (
+              <>
+                <OriginalPrice>NOK {product?.price}</OriginalPrice>
+                <DiscountedPrice>NOK {product?.discountedPrice}</DiscountedPrice>
+              </>
+            ) : (
+              <DiscountedPrice>NOK {product?.price}</DiscountedPrice>
+            )}
+          </PriceContainer>
+          <CartButton onClick={() => addToCart(product)}>Add to cart</CartButton>
+        </ProductInfoContainer>
+      </ContentContainer>
 
-    }, [])
-
-    return (
-        <Layout>
-            <ContentContainer>
-            <h1>{product?.title}</h1>
-            <ImageContainer>
-                <StyledImage src={product?.imageUrl} alt="Product image"/>
-            </ImageContainer>
-            <p>{product?.description}</p>
-            <p>Price: ${product?.discountedPrice}</p>
-                {product?.discountedPrice < product?.price && 
-                <p>
-                Discount: ${product.price - product.discountedPrice} ({((1 - product.discountedPrice / product.price) * 100).toFixed(2)}%)
-                </p>
-                }
-            <CartButton onClick={() => addToCart(product)}>Add to cart</CartButton>
-                <h3>Reviews:</h3>
-                {product?.reviews.map(r => (
-                <ReviewContainer>
-                <p>Username: {r.username}</p>
-                <p>Rating: {r.rating} </p>
-                <p>Description: {r.description}</p>
-                </ReviewContainer>
-                ))}
-            </ContentContainer>
-        </Layout>
-    )
-
+      {product?.reviews.length > 0 && (
+        <ReviewSection>
+          <h2>Reviews</h2>
+          {product?.reviews.map((review) => (
+            <ReviewContainer key={review.id}>
+              <ReviewUsername>{review.username}</ReviewUsername>
+              <ReviewRating>Rating: {review.rating}</ReviewRating>
+              <ReviewDescription>{review.description}</ReviewDescription>
+            </ReviewContainer>
+          ))}
+        </ReviewSection>
+      )}
+    </Layout>
+  );
 }

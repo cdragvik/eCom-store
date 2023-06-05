@@ -6,6 +6,8 @@ import {Home} from './pages/Home.jsx';
 import Contact from './pages/contact';
 import { ProductPage } from './pages/Product';
 
+
+
 const router = createBrowserRouter([
   {
     path: "/", 

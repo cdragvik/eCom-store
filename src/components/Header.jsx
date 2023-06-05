@@ -5,7 +5,7 @@ import Logo from "../assets/onestopshop.png";
 import { CartIcon } from "./CartIcon";
 
 const NavBar = styled.nav`
-  background-color: #5b7053;
+  background-color: #213555;
   height: 100px;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ const StyledLink = styled(Link)`
   transition: color 0.3s ease;
 
   &:hover {
-    color: #a2c296;
+    color: #547dc1;
   }
 `;
 

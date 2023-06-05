@@ -1,4 +1,4 @@
-import CartSvg from "../assets/cart.svg"
+import { FaShoppingCart } from "react-icons/fa";
 import styled from "styled-components"
 
 const CartIconContainer = styled.div`
@@ -24,7 +24,7 @@ const Overlay = styled.div`
 export function CartIcon (props) {
     return (
         <CartIconContainer>
-            <img src={CartSvg} alt="cart"/>
+            <FaShoppingCart/>
             <Overlay>
                 {props.itemsInCart ?? 0}
             </Overlay>

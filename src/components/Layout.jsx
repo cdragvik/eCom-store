@@ -4,7 +4,7 @@ import React from "react";
 import { styled } from 'styled-components';
 
 const LayoutContainer = styled.div`
-  background-color: #F5EFE7;
+  background-color: #f7f1e8;
 
 `;
 

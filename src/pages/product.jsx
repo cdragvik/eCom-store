@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import { FaStar } from "react-icons/fa";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -12,12 +13,23 @@ const ContentContainer = styled.div`
   max-width: 600px;
   margin: auto;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const StyledImage = styled.img`
   object-fit: fill;
   height: 300px;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    height: auto;
+    width: 100%;
+  }
 `;
 
 const ProductInfoContainer = styled.div`
@@ -26,7 +38,7 @@ const ProductInfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-padding: 10px 0px;
+  padding: 10px 0px;
 `;
 
 const Description = styled.p`
@@ -69,12 +81,23 @@ const ReviewSection = styled.div`
   align-items: center;
   gap: 20px;
   padding: 40px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const ReviewContainer = styled.div`
   padding: 20px;
-  border-top: solid gray;
+
   width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ReviewUsername = styled.p`
@@ -84,6 +107,12 @@ const ReviewUsername = styled.p`
 
 const ReviewRating = styled.p`
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+`;
+
+const StarIcon = styled(FaStar)`
+  margin-right: 5px;
 `;
 
 const ReviewDescription = styled.p`
@@ -101,8 +130,10 @@ export function ProductPage() {
   }, []);
 
   return (
+
     <Layout>
-        <br></br>
+      <br></br>
+
       <ContentContainer>
         <StyledImage src={product?.imageUrl} alt="Product image" />
         <ProductInfoContainer>
@@ -128,12 +159,17 @@ export function ProductPage() {
           {product?.reviews.map((review) => (
             <ReviewContainer key={review.id}>
               <ReviewUsername>{review.username}</ReviewUsername>
-              <ReviewRating>Rating: {review.rating}</ReviewRating>
+              <ReviewRating>
+                <StarIcon />
+                {review.rating}
+              </ReviewRating>
               <ReviewDescription>{review.description}</ReviewDescription>
             </ReviewContainer>
           ))}
         </ReviewSection>
+
       )}
+      <br></br>
     </Layout>
   );
 }

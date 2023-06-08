@@ -4,7 +4,8 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {Home} from './pages/Home.jsx';
 import Contact from './pages/contact';
-import { ProductPage } from './pages/Product';
+import { ProductPage } from './pages/ProductPage';
+
 
 
 

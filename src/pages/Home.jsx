@@ -14,7 +14,6 @@ const WelcomeContainer = styled.div`
 `;
 
 const WelcomeParagraph = styled.p`
-
   padding: 20px;
   text-align: center;
   font-weight: bold;
@@ -29,14 +28,42 @@ const ContentContainer = styled.div`
   grid-template-columns: repeat(3, minmax(0, 1fr));
 `;
 
+const SearchBar = styled.input`
+  width: 400px;
+  padding: 10px;
+  margin: 30px auto;
+  display: block;
+  border: none;
+  border-radius: 10px;
+`;
+
+
 export function Home() {
   const [products, setProducts] = useState();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://api.noroff.dev/api/v1/online-shop/")
       .then((response) => response.json())
-      .then((parsed) => setProducts(parsed));
+      .then((parsed) => {
+        setProducts(parsed);
+        setFilteredProducts(parsed);
+      });
   }, []);
+
+  useEffect(() => {
+    if (products) {
+      const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [searchQuery, products]);
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   return (
     <Layout>
@@ -46,9 +73,16 @@ export function Home() {
         </WelcomeParagraph>
       </WelcomeContainer>
 
+      <SearchBar
+        type="text"
+        placeholder="Search products"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+      />
+
       <ContentContainer>
-        {products?.map((p) => (
-          <Product product={p} />
+        {filteredProducts.map((p) => (
+          <Product product={p} key={p.id} />
         ))}
       </ContentContainer>
     </Layout>

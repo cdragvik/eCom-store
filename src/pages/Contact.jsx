@@ -62,7 +62,7 @@ const SuccessMessage = styled.p `
     text-align: center;
 `;
 
-export default function ContactPage({shoppingCart}) {
+export function ContactPage({shoppingCart}) {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [fullName, setFullName] = useState("");

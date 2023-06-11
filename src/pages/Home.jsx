@@ -22,7 +22,7 @@ const WelcomeParagraph = styled.p`
   font-size: 35px;
 `;
 
-const ContentContainer = styled.div`
+export const ContentContainer = styled.div`
   display: grid;
   justify-content: center;
   gap: 30px;

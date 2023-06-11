@@ -23,7 +23,7 @@ const FormGroup = styled.div`
   margin-bottom: 20px;
 `;
 
-const Label = styled.label`s
+const Label = styled.label`
 `;
 
 const Input = styled.input`

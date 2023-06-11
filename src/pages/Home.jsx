@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import Product from "../components/Product";
+
 import styled from "styled-components";
+import Product from "../components/Product";
+
 
 const WelcomeContainer = styled.div`
   background-image: url("src/assets/brickbackground.avif");
@@ -20,7 +22,7 @@ const WelcomeParagraph = styled.p`
   font-size: 35px;
 `;
 
-const ContentContainer = styled.div`
+export const ContentContainer = styled.div`
   display: grid;
   justify-content: center;
   gap: 30px;
@@ -38,7 +40,7 @@ const SearchBar = styled.input`
 `;
 
 
-export function Home() {
+export function Home({shoppingCart}) {
   const [products, setProducts] = useState();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -66,7 +68,7 @@ export function Home() {
   };
 
   return (
-    <Layout>
+    <Layout shoppingCart={shoppingCart}>
       <WelcomeContainer>
         <WelcomeParagraph>
           Your One-Stop Destination for All Your Shopping Needs!

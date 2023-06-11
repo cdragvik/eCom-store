@@ -61,7 +61,7 @@ const DiscountedPrice = styled.p`
   font-weight: bold;
 `;
 
-const CartButton = styled.button`
+export const CartButton = styled.button`
   background: #ECB390;
   border: none;
   border-radius: 10px;
@@ -119,7 +119,7 @@ const ReviewDescription = styled.p`
   margin-bottom: 0;
 `;
 
-export function ProductPage() {
+export function ProductPage({shoppingCart, setShoppingCart}) {
   const { id } = useParams();
   const [product, setProduct] = useState();
 
@@ -131,7 +131,7 @@ export function ProductPage() {
 
   return (
 
-    <Layout>
+    <Layout shoppingCart={shoppingCart}>
       <br></br>
 
       <ContentContainer>
@@ -149,7 +149,7 @@ export function ProductPage() {
               <DiscountedPrice>NOK {product?.price}</DiscountedPrice>
             )}
           </PriceContainer>
-          <CartButton onClick={() => addToCart(product)}>Add to cart</CartButton>
+          <CartButton onClick={() => setShoppingCart([...shoppingCart, product])}>Add to cart</CartButton>
         </ProductInfoContainer>
       </ContentContainer>
 

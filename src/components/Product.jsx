@@ -13,7 +13,7 @@ const Card = styled.div`
     text-align: center;
     padding: 20px;
     gap: 10px;
-    height: 400px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,7 +23,7 @@ const Card = styled.div`
     }
 `;
 
-const StyledImage = styled.img`
+export const StyledImage = styled.img`
     object-fit: cover;
     width: 100%;
     height: 300px;
@@ -60,7 +60,7 @@ export default function Product(props) {
   const hasDiscount = discountedPrice < price;
 
   return (
-    <StyledLink to={`product/${product.id}`}>
+    <StyledLink to={`/product/${product.id}`}>
       <Card>
         <ProductTitle>{product.title}</ProductTitle>
 

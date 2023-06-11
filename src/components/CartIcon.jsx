@@ -1,5 +1,7 @@
 import { FaShoppingCart } from "react-icons/fa";
-import styled from "styled-components"
+import { Link } from "react-router-dom";
+import styled from "styled-components"; 
+import React from "react";
 
 const CartIconContainer = styled.div`
     position: relative;
@@ -21,14 +23,15 @@ const Overlay = styled.div`
     color: white;
 `
 
-export function CartIcon (props) {
+export function CartIcon ({shoppingCart}) {
     return (
+        <Link to="/checkout">
         <CartIconContainer>
             <FaShoppingCart/>
             <Overlay>
-                {props.itemsInCart ?? 0}
+                <p>{shoppingCart?.length || 0 }</p>
             </Overlay>
         </CartIconContainer>
-
+        </Link>
     )
 }

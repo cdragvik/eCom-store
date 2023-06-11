@@ -13,7 +13,7 @@ export default function Layout(props) {
 
     return (
       <>
-        <Header></Header>
+        <Header shoppingCart={props.shoppingCart}></Header>
         <LayoutContainer>
             {props.children}   
         </LayoutContainer>

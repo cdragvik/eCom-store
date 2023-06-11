@@ -65,7 +65,7 @@ const SuccessMessage = styled.p `
     text-align: center;
 `;
 
-const ContactPage = () => {
+export default function ContactPage({shoppingCart}) {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [fullName, setFullName] = useState("");
@@ -107,7 +107,7 @@ const ContactPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout shoppingCart={shoppingCart}>
     <br></br>
 
     <FormTitle>Contact Us</FormTitle>
@@ -175,5 +175,3 @@ const ContactPage = () => {
     </Layout>
   );
 };
-
-export default ContactPage;

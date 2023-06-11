@@ -25,18 +25,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 const LogoImage = styled.img`
   height: 80px;
   width: auto;
   margin-right: 10px;
-`;
-
-const StyledLogoLink = styled(Link)`
   display: flex;
   align-items: center;
 `;
@@ -50,14 +42,13 @@ const StyledList = styled.ul`
   padding: 0;
 `;
 
-export default function Header() {
+export default function Header({shoppingCart}) {
   return (
     <NavBar>
-      <LogoContainer>
-        <StyledLogoLink to="/">
-          <LogoImage src={Logo} alt="Logo" />
-        </StyledLogoLink>
-      </LogoContainer>
+ 
+      <StyledLink to="/">
+        <LogoImage src={Logo} alt="Logo" />
+      </StyledLink>
 
       <StyledList>
         <li>
@@ -66,10 +57,10 @@ export default function Header() {
         <li>
           <StyledLink to="/contact">Contact</StyledLink>
         </li>
-        <li>
-          <CartIcon />
-        </li>
+
+        <CartIcon shoppingCart={shoppingCart}/>
       </StyledList>
+
     </NavBar>
   );
 }

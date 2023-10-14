@@ -31,11 +31,30 @@ To get started with the project, follow these steps:
 
 ### Installing
 
-Clone the repo:
-   ```sh
-   git clone
+## Setup & Installation
 
-### Running 
+### Installing 
 
-```sh
-npm run start
+1. Clone the repository to your local machine.
+    ```bash
+    git clone https://github.com/cdragvik/holidaze
+    cd holidaze
+    ```
+
+2. Install the dependencies using npm.
+    ```bash
+    npm install
+    ```
+    
+### Runnning
+3. Start the development server.
+    ```bash
+    npm run dev
+    ```
+
+## Contributing
+This project is a part of the examination and contributions are not open. However, feel free to fork the repository and experiment on your own.
+
+## Contact
+📧 Email: cndragvik@gmail.com
+🌐 LinkedIn: linkedin.com/in/christiane-nanette-dragvik

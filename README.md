@@ -24,7 +24,11 @@ The project consists of the following pages:
 - Contact Page: Provides a contact form with form validation for full name, subject, email, and message.
 
 ## Built With
-- React.js
+- JavaScript Framework: React.js
+- CSS Framework: Styled Components
+- Hosting: Netlify
+- Design Application: Adobe XD
+- Planning Application: GitHub Projects
 
 ## Getting Started
 To get started with the project, follow these steps:
@@ -57,4 +61,5 @@ This project is a part of the examination and contributions are not open. Howeve
 
 ## Contact
 📧 Email: cndragvik@gmail.com
+
 🌐 LinkedIn: linkedin.com/in/christiane-nanette-dragvik

@@ -25,7 +25,6 @@ The project consists of the following pages:
 
 ## Built With
 - React.js
-- [Additional tech stack items]
 
 ## Getting Started
 To get started with the project, follow these steps:
@@ -33,7 +32,7 @@ To get started with the project, follow these steps:
 ### Installing
 1. Clone the repo:
    ```sh
-   git clone [repo-url]
+   git clone [[repo-url](https://github.com/cdragvik/eCom-store.git)https://github.com/cdragvik/eCom-store.git]
 
 ### Running 
 

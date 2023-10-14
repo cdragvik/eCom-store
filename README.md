@@ -9,8 +9,6 @@
   - [Running](#running)
 - [Contributing](#contributing)
 - [Contact](#contact)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 This project is an e-commerce store built with React.js. It includes various pages such as the homepage, individual product page, cart page, and checkout success page. Users can browse products, add them to their cart, and complete the checkout process.
@@ -32,10 +30,6 @@ The project consists of the following pages:
 
 ## Getting Started
 To get started with the project, follow these steps:
-
-### Installing
-
-## Setup & Installation
 
 ### Installing 
 

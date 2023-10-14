@@ -30,9 +30,10 @@ The project consists of the following pages:
 To get started with the project, follow these steps:
 
 ### Installing
-1. Clone the repo:
+
+Clone the repo:
    ```sh
-   git clone [[repo-url](https://github.com/cdragvik/eCom-store.git)https://github.com/cdragvik/eCom-store.git]
+   git clone
 
 ### Running 
 
